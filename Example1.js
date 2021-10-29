@@ -18,6 +18,11 @@ class Example1 extends Phaser.Scene {
     this.key_S = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
     this.key_D = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
 
+    this.key_up = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
+    this.key_down = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
+    this.key_left = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
+    this.key_right = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
+
     this.input.on('pointerdown', function(event){
       this.image.x = event.x; 
       this.image.y = event.y; 
@@ -40,14 +45,27 @@ class Example1 extends Phaser.Scene {
 
   }
   update(time, delta_ms) {
-    let pixels_per_ms = 0.5;
+    let cat_pixels_per_ms = 0.5;
+    let camera_pixels_per_ms = 0.2;
     if(this.key_A.isDown)
-      this.image.x -= pixels_per_ms * delta_ms;
+      this.image.x -= cat_pixels_per_ms * delta_ms;
     if(this.key_D.isDown)
-      this.image.x += pixels_per_ms * delta_ms;
+      this.image.x += cat_pixels_per_ms * delta_ms;
     if(this.key_W.isDown)
-      this.image.y -= pixels_per_ms * delta_ms;
+      this.image.y -= cat_pixels_per_ms * delta_ms;
     if(this.key_S.isDown)
-      this.image.y += pixels_per_ms * delta_ms;
+      this.image.y += cat_pixels_per_ms * delta_ms;
+    if(this.key_up.isDown)
+      this.cameras.main.scrollY -=
+        camera_pixels_per_ms * delta_ms;
+    if(this.key_down.isDown)
+      this.cameras.main.scrollY +=
+        camera_pixels_per_ms * delta_ms;
+    if(this.key_left.isDown)
+      this.cameras.main.scrollX -=
+        camera_pixels_per_ms * delta_ms;
+    if(this.key_right.isDown)
+      this.cameras.main.scrollX +=
+        camera_pixels_per_ms * delta_ms;
   }
 }
