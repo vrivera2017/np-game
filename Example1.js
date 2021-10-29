@@ -44,6 +44,7 @@ class Example1 extends Phaser.Scene {
         this.scene.start("Example3");
       }
     }, this);
+    this.cameras.main.startFollow(this.image, false, 0.1, 0.1);
 
   }
   update(time, delta_ms) {
@@ -57,17 +58,18 @@ class Example1 extends Phaser.Scene {
       this.image.y -= cat_pixels_per_ms * delta_ms;
     if(this.key_S.isDown)
       this.image.y += cat_pixels_per_ms * delta_ms;
-    if(this.key_up.isDown)
-      this.cameras.main.scrollY -=
-        camera_pixels_per_ms * delta_ms;
-    if(this.key_down.isDown)
-      this.cameras.main.scrollY +=
-        camera_pixels_per_ms * delta_ms;
-    if(this.key_left.isDown)
-      this.cameras.main.scrollX -=
-        camera_pixels_per_ms * delta_ms;
-    if(this.key_right.isDown)
-      this.cameras.main.scrollX +=
-        camera_pixels_per_ms * delta_ms;
+    // if(this.key_up.isDown)
+    //   this.cameras.main.scrollY -=
+    //     camera_pixels_per_ms * delta_ms;
+    // if(this.key_down.isDown)
+    //   this.cameras.main.scrollY +=
+    //     camera_pixels_per_ms * delta_ms;
+    // if(this.key_left.isDown)
+    //   this.cameras.main.scrollX -=
+    //     camera_pixels_per_ms * delta_ms;
+    // if(this.key_right.isDown)
+    //   this.cameras.main.scrollX +=
+    //     camera_pixels_per_ms * delta_ms;
+    // this.cameras.main.centerOn(this.image.x, this.image.y);
   }
 }
