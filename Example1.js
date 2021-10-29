@@ -5,8 +5,10 @@ class Example1 extends Phaser.Scene {
 
   preload() {
     this.load.image('cat', 'assets/cat.png');
+    this.load.image('street_bg', 'assets/street_bg.jpeg');
   }
   create() {
+    this.add.image(0,0,'street_bg');
     this.image = this.add.image(400,300,'cat');
     
     this.input.keyboard.on('keyup-D', function(event){
