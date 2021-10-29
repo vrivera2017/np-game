@@ -13,7 +13,10 @@ class Example1 extends Phaser.Scene {
       this.image.x +=10;
     }, this);
 
-    this.key_A = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A) 
+    this.key_W = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+    this.key_A = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+    this.key_S = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+    this.key_D = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
 
     this.input.on('pointerdown', function(event){
       this.image.x = event.x; 
@@ -36,8 +39,15 @@ class Example1 extends Phaser.Scene {
     }, this);
 
   }
-  update(delta) {
+  update(time, delta_ms) {
+    let pixels_per_ms = 0.5;
     if(this.key_A.isDown)
-      this.image.x--;
+      this.image.x -= pixels_per_ms * delta_ms;
+    if(this.key_D.isDown)
+      this.image.x += pixels_per_ms * delta_ms;
+    if(this.key_W.isDown)
+      this.image.y -= pixels_per_ms * delta_ms;
+    if(this.key_S.isDown)
+      this.image.y += pixels_per_ms * delta_ms;
   }
 }
