@@ -6,10 +6,14 @@ class Example1 extends Phaser.Scene {
   preload() {
     this.load.image('cat', 'assets/cat.png');
     this.load.image('street_bg', 'assets/street_bg.jpeg');
+    this.load.image('grass_bg', 'assets/grass_bg.jpg');
   }
   create() {
-    this.add.image(0,0,'street_bg');
-    this.image = this.add.image(400,300,'cat');
+    //this.background = new InfiniteBackground('street_bg', 0, 0, )
+    this.background = new InfiniteBackground('grass_bg', 0, 0, )
+    this.background.createImages(this, 0, 0);
+    //this.add.image(0,0,'street_bg');
+    this.image = this.add.image(0,0,'cat');
     
     this.input.keyboard.on('keyup-D', function(event){
       this.image.x +=10;
@@ -58,6 +62,7 @@ class Example1 extends Phaser.Scene {
       this.image.y -= cat_pixels_per_ms * delta_ms;
     if(this.key_S.isDown)
       this.image.y += cat_pixels_per_ms * delta_ms;
+    this.background.updateImages(this.image.x, this.image.y);
     // if(this.key_up.isDown)
     //   this.cameras.main.scrollY -=
     //     camera_pixels_per_ms * delta_ms;
