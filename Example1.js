@@ -7,11 +7,21 @@ class Example1 extends Phaser.Scene {
     this.load.image('cat', 'assets/cat.png');
     this.load.image('street_bg', 'assets/street_bg.jpeg');
     this.load.image('grass_bg', 'assets/grass_bg.jpg');
+    this.load.image('milk', 'assets/milk.webp');
+    this.load.image('fish', 'assets/fish.webp');
+    this.load.json('objects', 'objects.json');
   }
   create() {
     //this.background = new InfiniteBackground('street_bg', 0, 0, )
     this.background = new InfiniteBackground('grass_bg', 0, 0, )
     this.background.createImages(this, 0, 0);
+
+    for (let o of this.cache.json.get('objects')) {
+      console.log(o);
+      const img = this.add.image(o.x, o.y, o.image_key);
+      console.log(o);
+      img.setScale(o.scale);
+    }
     //this.add.image(0,0,'street_bg');
     this.image = this.add.image(0,0,'cat');
     
