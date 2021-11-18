@@ -3,18 +3,18 @@
     "image_key": "milk",
     "x": 100,
     "y": 100,
-    "scale": 0.15
+    "size": 100
   },
   {
     "image_key": "milk",
     "x": 700,
     "y": 100,
-    "scale": 0.15
+    "size": 100
   },
   {
     "image_key": "fish",
     "x": 100,
     "y": 700,
-    "scale": 0.15
+    "size": 100
   }
 ]

@@ -16,11 +16,9 @@ class Example1 extends Phaser.Scene {
     this.background = new InfiniteBackground('grass_bg', 0, 0, )
     this.background.createImages(this, 0, 0);
 
+    this.objects = [];
     for (let o of this.cache.json.get('objects')) {
-      console.log(o);
-      const img = this.add.image(o.x, o.y, o.image_key);
-      console.log(o);
-      img.setScale(o.scale);
+      this.objects.push(new Object(this, o.image_key, o.size, o.x, o.y));
     }
     //this.add.image(0,0,'street_bg');
     this.image = this.add.image(0,0,'cat');
